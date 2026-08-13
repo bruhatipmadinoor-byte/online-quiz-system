@@ -1,0 +1,159 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Result</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+
+<body>
+
+    <div class="result-page">
+
+        <div class="result-card">
+
+            <div class="trophy">
+                🏆
+            </div>
+
+            <h1>Quiz Completed!</h1>
+
+            <p class="result-text">
+                Congratulations! You completed the quiz.
+            </p>
+
+
+            <div class="score-circle">
+
+                <span id="score">0</span>
+
+                <small>/ 5</small>
+
+            </div>
+
+
+            <h2 id="resultMessage">
+                Good Job!
+            </h2>
+
+
+            <p id="percentage">
+                You scored 0%
+            </p>
+
+
+            <div class="thank-you">
+
+                🎉 Thank You for Participating! 🎉
+
+                <br>
+
+                Keep learning and keep improving.
+
+            </div>
+
+
+            <button
+                class="restart-button"
+                onclick="restartQuiz()">
+
+                🔄 Try Again
+
+            </button>
+
+
+            <button
+                class="home-button"
+                onclick="goHome()">
+
+                🏠 Back to Home
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let score =
+            Number(localStorage.getItem("quizScore")) || 0;
+
+
+        document.getElementById("score")
+            .textContent = score;
+
+
+        let percentage =
+            (score / 5) * 100;
+
+
+        document.getElementById("percentage")
+            .textContent =
+            "You scored " + percentage + "%";
+
+
+        let message;
+
+
+        if (score === 5) {
+
+            message = "🌟 Perfect Score!";
+
+        }
+
+        else if (score === 4) {
+
+            message = "👏 Excellent Work!";
+
+        }
+
+        else if (score === 3) {
+
+            message = "👍 Good Job!";
+
+        }
+
+        else {
+
+            message = "💪 Keep Practicing!";
+
+        }
+
+
+        document.getElementById("resultMessage")
+            .textContent = message;
+
+
+        function restartQuiz() {
+
+            localStorage.removeItem("quizScore");
+
+            window.location.href = "quiz.html";
+
+        }
+
+
+        function goHome() {
+
+            localStorage.removeItem("quizScore");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
